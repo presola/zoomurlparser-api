@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from bs4 import BeautifulSoup
 import requests
 import urllib.parse
-from datetime import datetime
 from dateutil import parser
 
 class ZoomURL(BaseModel):
@@ -32,6 +31,9 @@ class ZoomParser:
 
         topic = details[0].get_text()
         description = details[1].get_text()
+        split_description = description.split()
+        if len(split_description) > 20:
+            description = '{0}...'.format(' '.join(split_description.split()[:20]))
         date_time = details[2].get_text()
         date_time_split = date_time.split('in')
 
