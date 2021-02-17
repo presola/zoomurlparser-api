@@ -4,12 +4,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:8080",
-    "http://localhost:4200",
-    "https://zoomurl-angular.herokuapp.com",
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
