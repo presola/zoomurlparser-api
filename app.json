@@ -1,0 +1,7 @@
+{
+  "name": "FastAPI Python3 Sample",
+  "description": "A Simple app",
+  "repository": "https://github.com/presola/zoomurlparser-api",
+  "logo": "",
+  "keywords": ["python3", "fastapi"]
+}
