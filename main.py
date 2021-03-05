@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from zoomParser import ZoomURL, ZoomParser
 from starlette.middleware.cors import CORSMiddleware
 
@@ -23,5 +23,7 @@ def read_root():
 @app.post("/urlParser")
 def read_item(zoom_url: ZoomURL):
     zoom_parser = ZoomParser()
-    response = zoom_parser.parse_url(zoom_url.link)
+    response, success = zoom_parser.parse_url(zoom_url.link)
+    if not success:
+        raise HTTPException(status_code=400, detail=response)
     return response
